@@ -7,15 +7,15 @@
 
 import Foundation
 
-protocol NetworkConfiguration {
+public protocol NetworkConfiguration {
     var baseURL: URL { get }
 }
 
-struct DefaultNetworkConfiguration: NetworkConfiguration {
+public struct DefaultNetworkConfiguration: NetworkConfiguration {
     
-    let baseURL: URL
+    public let baseURL: URL
     
-    init(baseURL: URL) {
+    public init(baseURL: URL) {
         self.baseURL = baseURL
     }
 }

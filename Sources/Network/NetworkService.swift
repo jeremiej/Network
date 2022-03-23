@@ -7,25 +7,25 @@
 
 import Foundation
 
-protocol NetworkService {
+public protocol NetworkService {
     
     func request(_ request: URLRequest) async throws -> Data
 }
 
-enum NetworkError: Error {
+public enum NetworkError: Error {
     case badServerResponse
     case serverError(statusCode: Int)
 }
 
-class DefaultNetworkService: NetworkService {
+public class DefaultNetworkService: NetworkService {
     
     private let session: URLSession
     
-    init(session: URLSession = URLSession(configuration: .default)) {
+    public init(session: URLSession = URLSession(configuration: .default)) {
         self.session = session
     }
     
-    func request(_ request: URLRequest) async throws -> Data {
+    public func request(_ request: URLRequest) async throws -> Data {
         let result = try await session.data(for: request)
         
         guard let httpResponse = result.1 as? HTTPURLResponse else {
